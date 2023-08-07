@@ -1,16 +1,21 @@
 package com.northwest.dto;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 public class EmployeeDto {
     private String firstName;
     private String lastName;
-    private Date birthDate;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate birthDate;
     private String profileName;
     private String profileBase64;
 
     public EmployeeDto(){}
 
-    public EmployeeDto(String firstName, String lastName, Date birthDate, String profileName, String profileBase64) {
+    public EmployeeDto(String firstName, String lastName, LocalDate birthDate, String profileName, String profileBase64) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -34,11 +39,11 @@ public class EmployeeDto {
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
