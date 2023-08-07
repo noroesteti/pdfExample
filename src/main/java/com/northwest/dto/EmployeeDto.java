@@ -1,6 +1,6 @@
 package com.northwest.dto;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -8,12 +8,16 @@ public class EmployeeDto {
     private String firstName;
     private String lastName;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthDate;
     private String profileName;
     private String profileBase64;
 
     public EmployeeDto(){}
+
+
+    public void setProfileBase64(String profileBase64) {
+        this.profileBase64 = profileBase64;
+    }
 
     public EmployeeDto(String firstName, String lastName, LocalDate birthDate, String profileName, String profileBase64) {
         this.firstName = firstName;
@@ -57,9 +61,5 @@ public class EmployeeDto {
 
     public String getProfileBase64() {
         return profileBase64;
-    }
-
-    public void setProfileBase64(String profileBase64) {
-        this.profileBase64 = profileBase64;
     }
 }
